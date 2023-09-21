@@ -14,6 +14,3 @@ Bun.serve({
         return response;
     }
 });
-
-
-const calculateCaracBonus = (value: number) => Math.floor((value-10) / 2);
