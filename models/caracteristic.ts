@@ -5,6 +5,10 @@ export class Caracteristic {
     name!: CaracteristicEnum;
     description!: string;
     value!: number;
+    
+    constructor(base: Partial<Caracteristic>) {
+        Object.assign(this, base);
+    }
 
     public calculateBonus(): number {
         return Caracteristic.calculateCaracBonus(this.value);
