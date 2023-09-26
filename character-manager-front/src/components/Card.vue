@@ -1,27 +1,13 @@
-<!-- <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
-</script> -->
-
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <h1>
-          Character manger
-        </h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 flex">
-        <div class="task-card  mr-4">
+  <div class="task-card">
           <!-- CARD HEAD -->
           <div class="task-card__head">
             <div class="task-card__title">
               <div class="task-card__title-partOne font-bold">
-                Paf
+                Juke
               </div>
               <div class="task-card__title-partTwo">
-                le chien
+                le Bricoleur
               </div>
             </div>
 
@@ -36,7 +22,9 @@
           <div class="task-card__body">
 
             <div class="task-card__description">
-              et Bim! un bus!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae vero necessitatibus facilis illo incidunt
+              ipsum inventore quibusdam eum, illum a maxime pariatur veritatis earum ut accusantium, provident dicta
+              aliquam dolores.
             </div>
           </div>
 
@@ -47,37 +35,19 @@
             </div>
           </div>
         </div>
-
-        <Card msg="Vite + Vue"/>
-        
-      </div>
-    </div>
-  </div>
-
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
-
 <script lang="ts">
-// DO NOT USE <script setup>
+import { Component, Prop, Vue, toNative } from "vue-facing-decorator";
 
-//vue options API.
-/*
-import { defineComponent } from "vue";
-export default defineComponent({});
-*/
+@Component({})
+class Card extends Vue {
+  @Prop() readonly msg!: string;
+}
 
-//class component
-import { Component, Vue, toNative } from "vue-facing-decorator";
-import Card from "./components/Card.vue";
-@Component({
-  components: { Card }
-})
-class App extends Vue {}
-
-export default toNative(App)
-
+export default toNative(Card);
 
 </script>
 
-<style scoped></style>
+<style>
+</style>
