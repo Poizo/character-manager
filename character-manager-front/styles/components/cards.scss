@@ -1,0 +1,42 @@
+//////////////////
+/// TASK CARD
+//////////////////
+
+.task-card {
+
+    @apply rounded bg-grey-00 p-4 shadow-md w-full;
+
+    &__head {
+        @apply flex justify-between;
+    }
+
+    &__title {
+        @apply text-sm leading-6 flex grow text-grey-09;
+
+        &-partOne {}
+
+        &-partTwo {
+            @apply ml-1;
+        }
+    }
+
+    &__body {
+        @apply py-1.5;
+    }
+
+    &__description {
+        @apply text-xs leading-6 text-grey-07;
+    }
+
+    &__foot {
+        @apply pt-2;
+    }
+
+    &__date {
+        @apply text-sm leading-6 text-grey-05 font-bold;
+
+        &.-urgent {
+            @apply text-danger-primary;
+        }
+    }
+}

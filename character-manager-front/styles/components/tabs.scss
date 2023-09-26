@@ -1,0 +1,10 @@
+.ds-tab{
+    @apply inline-block leading-10 mr-4 hover:text-action-primary transition-colors;
+    &.-active{
+        @apply text-action-primary relative before:block before:w-full before:h-[2px] before:bg-action-primary before:absolute before:bottom-[0rem];
+    }
+
+    .indication-number {
+        @apply px-2 py-1 rounded-full bg-action-primary text-grey-00 leading-4 text-xs inline-block;
+    }
+}

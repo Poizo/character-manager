@@ -1,0 +1,184 @@
+// Date picker unique date choice
+.date-picker {
+    @apply relative w-full cursor-text p-0;
+
+    input.mat-datepicker-input {
+        @apply m-0 h-8
+        w-full rounded
+        border border-grey-03 bg-grey-00
+        p-2
+        text-sm text-grey-08
+        transition-colors
+        placeholder:text-grey-03 hover:border-action-primary
+        focus:border-action-primary focus:outline-none focus-visible:border-action-primary;
+
+        &::-ms-clear {
+            @apply hidden;
+        }
+    }
+
+    &.-error {
+        input.mat-datepicker-input {
+            @apply border-danger-primary hover:border-danger-primary
+            focus:border-danger-primary focus-visible:border-danger-primary
+            placeholder:text-danger-primary;
+        }
+    }
+}
+
+// Date picker toggler (icon)
+.date-picker-toggler {
+    @apply absolute z-10 cursor-pointer transition-colors hover:text-action-primary text-grey-03;
+    top: calc(50% - 10px);
+    right: 8px;
+}
+
+.-error {
+    .date-picker-toggler {
+        @apply text-danger-primary;
+    }
+}
+
+// Date picker range
+.date-picker-range {
+    &-labels {
+        @apply w-full flex pb-1;
+
+        label {
+            @apply w-1/2;
+        }
+    }
+    &-input-container {
+        @apply relative w-full cursor-text
+            border border-grey-03 rounded
+            p-0 h-8
+            transition-colors
+            focus-within:border-action-primary hover:border-action-primary;
+        .mat-date-range-input-container {
+
+            .mat-date-range-input-wrapper {
+                @apply w-1/2 h-8;
+
+                input {
+                    @apply py-1 px-2 text-sm text-grey-08 placeholder:text-grey-03;
+                }
+            }
+
+            .mat-date-range-input-separator.mat-date-range-input-separator-hidden {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.-error {
+        .date-picker-range-input-container {
+            @apply border-danger-primary focus-within:border-danger-primary hover:border-danger-primary;
+
+            input {
+                @apply placeholder:text-danger-primary;
+            }
+
+            .mat-date-range-input-separator {
+                @apply text-danger-primary;
+            }
+        }
+    }
+}
+
+// MAT PICKER CONTENT STYLE
+.mat-datepicker-content {
+    .mat-datepicker-content-container {
+        .mat-calendar {
+            @apply h-auto;
+            .mat-calendar-header {
+                .mat-calendar-controls {
+                    button {
+                        border: inherit;
+                        @apply border-2 border-transparent;
+                    }
+                    button:hover {
+                        @apply bg-action-light;
+                    }
+                    button[disabled="true"]:after {
+                        @apply border-grey-05;
+                    }
+                    button.cdk-keyboard-focused {
+                        @apply border-action-primary;
+                    }
+                    .mat-calendar-period-button {
+                        @apply bg-action-lighter fill-action-primary
+                        text-action-primary transition-colors
+                        hover:bg-action-primary hover:fill-grey-00
+                        hover:text-grey-00;
+                    }
+                    .mdc-icon-button {
+                        @apply m-1
+                            h-8
+                            w-8
+                            p-1;
+                        &:after {
+                            @apply m-2;
+                        }
+                    }
+                    .mdc-icon-button:not([disabled="true"]) {
+                        @apply bg-action-lighter text-action-primary
+                            transition-colors hover:bg-action-primary
+                            hover:text-grey-00;
+                    }
+                }
+            }
+
+            .mat-calendar-content {
+                .mat-calendar-body-selected {
+                    @apply bg-action-primary
+                        text-grey-00;
+                }
+                .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+                    > .mat-calendar-body-cell-content:not(
+                        .mat-calendar-body-selected
+                    ):not(.mat-calendar-body-comparison-identical) {
+                    @apply bg-action-lighter
+                        text-action-primary;
+                }
+                .mat-calendar-body-preview-start:before {
+                    @apply left-[5%] w-[95%]
+                        rounded-tl-full
+                        rounded-bl-full;
+                }
+                .mat-calendar-body-preview-end:before {
+                    @apply right-[5%] w-[95%]
+                        rounded-tr-full
+                        rounded-br-full;
+                }
+                .mat-calendar-body-in-preview:before {
+                    @apply bg-grey-03;
+                }
+                .mat-calendar-body-cell-preview {
+                    @apply border-0;
+                }
+                .mat-calendar-body-in-range::before {
+                    @apply bg-grey-03;
+                }
+                .mat-calendar-body-disabled {
+                    @apply rounded-full
+                        bg-grey-02
+                        text-grey-06;
+                }
+
+                &.cdk-keyboard-focused {
+                    .mat-calendar-body-active {
+                        .mat-focus-indicator {
+                            @apply border-2
+                                bg-action-lighter
+                                text-action-primary;
+                            &.mat-calendar-body-selected {
+                                @apply bg-action-primary
+                                    text-grey-00;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
