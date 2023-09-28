@@ -1,82 +1,45 @@
-<!-- <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
-</script> -->
-
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <h1>
-          Character manger
-        </h1>
-      </div>
+  <div>
+    
+    <Lateral-Menu :isOpen="isMenuOpen" @closeMenu="closeMenu"></Lateral-Menu>
+    
+    <div class="relative" :class="{'pl-[300px]':isMenuOpen}">
+        <button v-show="!isMenuOpen" @click="toggleMenu" class="button --action --primary" type="button">
+          <span class="button__label">toggle menu</span>
+        </button>
+        <router-view></router-view>
     </div>
-    <div class="row">
-      <div class="col-12 flex">
-        <div class="task-card  mr-4">
-          <!-- CARD HEAD -->
-          <div class="task-card__head">
-            <div class="task-card__title">
-              <div class="task-card__title-partOne font-bold">
-                Paf
-              </div>
-              <div class="task-card__title-partTwo">
-                le chien
-              </div>
-            </div>
 
-            <div class="task-card__actions">
-              <button class="button --action --primary" type="button">
-                <span class="button__label">bouton</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- CARD BODY -->
-          <div class="task-card__body">
-
-            <div class="task-card__description">
-              et Bim! un bus!
-            </div>
-          </div>
-
-          <!-- CARD FOOT -->
-          <div class="task-card__foot">
-            <div class="task-card__date">
-              01/01/2020
-            </div>
-          </div>
-        </div>
-
-        <Card msg="Vite + Vue"/>
-        
-      </div>
-    </div>
   </div>
-
-  <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
 
 <script lang="ts">
-// DO NOT USE <script setup>
 
-//vue options API.
-/*
-import { defineComponent } from "vue";
-export default defineComponent({});
-*/
+  import { Component, Vue, toNative } from "vue-facing-decorator";
+  import Card from "./components/Card.vue";
+  import LateralMenu from "./components/Lateral-Menu.vue";
+  import { RouterView } from "vue-router";
+  
+  
+  @Component({
+    components: { LateralMenu, Card, RouterView },
+    name: 'App'
+  })
+  class App extends Vue {
 
-//class component
-import { Component, Vue, toNative } from "vue-facing-decorator";
-import Card from "./components/Card.vue";
-@Component({
-  components: { Card }
-})
-class App extends Vue {}
+    public isMenuOpen= false;
 
-export default toNative(App)
+    public toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    }
 
+    public closeMenu() {
+      this.isMenuOpen= false;
+    }
+  }
+
+  export default toNative(App)
 
 </script>
 

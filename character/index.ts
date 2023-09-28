@@ -1,14 +1,23 @@
 import { mockCharacters } from "../mock-data/mock-characters";
+import { PrismaClient } from "@prisma/client";
 
-export function manageCharacterService(req: Request): Response {
+const prisma = new PrismaClient();
+
+
+export async function manageCharacterService(req: Request): Promise<Response> {
     let response: Response;
     const url = new URL(req.url);
     const {method} = req;
 
+    return await prisma.character.findFirst().then(c => response = new Response(JSON.stringify(c)));
+
     switch (method) {
         case 'GET':
             if (url.pathname === '/characters') {
-                response = new Response(JSON.stringify(mockCharacters));
+
+                await prisma.character.findFirst().then(c => response = new Response(JSON.stringify(c)))
+
+                // response = new Response(JSON.stringify(mockCharacters));
             } else {
                 response =  new Response('Characters - GET -- but no match!', {
                     status: 404
