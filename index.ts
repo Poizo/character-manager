@@ -1,4 +1,7 @@
+import { password } from "bun";
 import { manageCharacterService } from "./character";
+import { Encrypter } from "./helpers/encrypter.helper";
+import { manageUserService } from "./users";
 
 Bun.serve({
     hostname: '127.0.0.1',
@@ -8,12 +11,26 @@ Bun.serve({
         const url = new URL(req.url);
         const {method} = req;
 
-        console.log(url);
-    
-
         switch (url.pathname) {
             case '/characters':
+
+                const salt = await Encrypter.genSalt().then(s => s );
+                
+                const password = 'test';
+                const passwordHashed = await Encrypter.hash(password, salt).then(pwd => pwd);
+                
+                console.log(passwordHashed);
+                
+                console.log(await Encrypter.comparePwdAndHash('test', passwordHashed));
+                
+                
+
                 response = manageCharacterService(req);
+                break;
+            
+            case '/user':
+                response = manageUserService(req);
+
                 break;
         
             default:

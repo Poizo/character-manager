@@ -34,7 +34,7 @@ class LateralMenu extends Vue {
   public menuClassContainer = '';
 
   emitClose() {
-    this.$emit('closeMenu')
+    this.$emit('closeMenu');
   }
 }
 

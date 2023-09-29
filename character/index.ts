@@ -1,4 +1,4 @@
-import { mockCharacters } from "../mock-data/mock-characters";
+// import { mockCharacters } from "../mock-data/mock-characters";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();

@@ -18,4 +18,19 @@ export class ObjectHelper {
         return Object.keys(obj).length === 0;
     }
 
+    /**
+     * Test if a given param is a string and if it's not empty
+     * @param stringTotest 
+     */
+    public static isStringAndNotEmpty(stringTotest: any): boolean {
+        return typeof stringTotest === 'string' && /^\S+.*\S$/.test(stringTotest);
+    }
+
+    /**
+     * Test if a given param is a string and if it's a valid email adress
+     * @param stringTotest 
+     */
+    public static isValidEmail(stringTotest: any): boolean {
+        return typeof stringTotest === 'string' && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(stringTotest);
+    }
 }

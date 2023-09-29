@@ -16,7 +16,7 @@
 
 <script lang="ts">
 
-  import { Component, Vue, toNative } from "vue-facing-decorator";
+  import { Component, Inject, Vue, toNative } from "vue-facing-decorator";
   import Card from "./components/Card.vue";
   import LateralMenu from "./components/Lateral-Menu.vue";
   import { RouterView } from "vue-router";
@@ -28,10 +28,17 @@
   })
   class App extends Vue {
 
+    @Inject
+    storageService: any;
+
+
     public isMenuOpen= false;
 
     public toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+      console.log(this.storageService);
+      this.storageService.log('blabla')
+      this.storageService.cat = 'chat';
     }
 
     public closeMenu() {
