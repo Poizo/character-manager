@@ -1,4 +1,3 @@
-import { password } from "bun";
 import { manageCharacterService } from "./character";
 import { Encrypter } from "./helpers/encrypter.helper";
 import { manageUserService } from "./users";
@@ -29,8 +28,8 @@ Bun.serve({
                 break;
             
             case '/user':
+            case '/user/connect':
                 response = manageUserService(req);
-
                 break;
         
             default:
