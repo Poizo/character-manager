@@ -100,6 +100,8 @@ function checkCredentialsProperty(credentials: any): boolean {
 
 function invalidUserPostRequest(): Promise<Response> {
     return new Promise<Response>((resolve) => {
-       resolve(new Response('USER - POST - Invalid request'));
+       resolve(new Response('USER - POST - Invalid request', {
+        status: 404
+       }));
      });
    }
