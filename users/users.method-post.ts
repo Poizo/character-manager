@@ -35,6 +35,13 @@ export async function connectUser(credentials: {login: string, password: string}
         return await prisma.user.findUnique({
                 where: {
                     email: credentials.login
+                },
+                include: {
+                    characters: {
+                        select: {
+                            id: true
+                        }
+                    }
                 }
             }).then(async user => {
                 if (!!user) {
@@ -44,7 +51,7 @@ export async function connectUser(credentials: {login: string, password: string}
                             firstname: user.firstname,
                             lastname: user.lastname,
                             email: user.email,
-                            // characters: user.characters
+                            characters: user.characters.map(c => c.id)
                         }));
                     } else {
                         return new Response('incorrect credentials', {
@@ -61,7 +68,6 @@ export async function connectUser(credentials: {login: string, password: string}
 
     return response;
 }
-
 
 ///////////////
 // 

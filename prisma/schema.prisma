@@ -25,4 +25,10 @@ model Character {
     player User @relation(fields: [playerId], references: [id])
     playerId Int
     description String?
+    strength Int
+    dexterity Int
+    constitution Int
+    intelligence Int
+    wisdom Int
+    charisma Int
 }

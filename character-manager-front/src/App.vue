@@ -1,13 +1,13 @@
 <template>
   <div>
-    
+
     <Lateral-Menu :isOpen="isMenuOpen" @closeMenu="closeMenu"></Lateral-Menu>
-    
-    <div class="relative" :class="{'pl-[300px]':isMenuOpen}">
-        <button v-show="!isMenuOpen" @click="toggleMenu" class="button --action --primary" type="button">
-          <span class="button__label">toggle menu</span>
-        </button>
-        <router-view></router-view>
+
+    <div class="relative" :class="{ 'pl-[300px]': isMenuOpen }">
+      <button v-show="!isMenuOpen" @click="toggleMenu" class="button --action --primary" type="button">
+        <span class="button__label">toggle menu</span>
+      </button>
+      <router-view></router-view>
     </div>
 
   </div>
@@ -16,37 +16,30 @@
 
 <script lang="ts">
 
-  import { Component, Inject, Vue, toNative } from "vue-facing-decorator";
-  import Card from "./components/Card.vue";
-  import LateralMenu from "./components/Lateral-Menu.vue";
-  import { RouterView } from "vue-router";
-  
-  
-  @Component({
-    components: { LateralMenu, Card, RouterView },
-    name: 'App'
-  })
-  class App extends Vue {
+import { Component, Inject, Vue, toNative } from "vue-facing-decorator";
 
-    @Inject
-    storageService: any;
+import LateralMenu from "./components/Lateral-Menu.vue";
+import { RouterView } from "vue-router";
 
 
-    public isMenuOpen= false;
+@Component({
+  components: { LateralMenu, RouterView },
+  name: 'App'
+})
+class App extends Vue {
 
-    public toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-      console.log(this.storageService);
-      this.storageService.log('blabla')
-      this.storageService.cat = 'chat';
-    }
+  public isMenuOpen = false;
 
-    public closeMenu() {
-      this.isMenuOpen= false;
-    }
+  public toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
-  export default toNative(App)
+  public closeMenu() {
+    this.isMenuOpen = false;
+  }
+}
+
+export default toNative(App)
 
 </script>
 

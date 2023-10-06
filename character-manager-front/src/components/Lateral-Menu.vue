@@ -26,12 +26,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, toNative } from "vue-facing-decorator";
+import { Component, Emit, Prop, Vue, toNative } from "vue-facing-decorator";
 
 @Component({})
 class LateralMenu extends Vue {
   @Prop() isOpen?: boolean = false;
   public menuClassContainer = '';
+
+  @Emit
+  closeMenu: any;
 
   emitClose() {
     this.$emit('closeMenu');

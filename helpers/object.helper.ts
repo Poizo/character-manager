@@ -23,7 +23,7 @@ export class ObjectHelper {
      * @param stringTotest 
      */
     public static isStringAndNotEmpty(stringTotest: any): boolean {
-        return typeof stringTotest === 'string' && /^\S+.*\S$/.test(stringTotest);
+        return typeof stringTotest === 'string' && /^\S+.*\S*$/.test(stringTotest);
     }
 
     /**
